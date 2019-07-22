@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import SidePanel from './SidePanel'
 
 class SidePanelContainer extends Component {
   render() {
     return (
-      <SidePanel />
+      <SidePanel 
+        user={this.props.user} 
+      />
     )
   }
 }
-export default SidePanelContainer;
+
+const mapStateToProps = state => ({
+  user: state.user.currentUser
+}); 
+
+export default  connect(mapStateToProps)(SidePanelContainer);

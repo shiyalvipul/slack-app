@@ -10,4 +10,4 @@ export const showNotification = (message, type, timeOut, position) => toast(
   },
 );
 
-export const dismissNotification = toastId => toast.dismiss(toastId);
+// export const dismissNotification = toastId => toast.dismiss(toastId);

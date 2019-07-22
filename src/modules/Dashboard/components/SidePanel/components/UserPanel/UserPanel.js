@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Grid, Icon, Dropdown } from 'semantic-ui-react';
+import { Header, Grid, Icon, Dropdown, Image } from 'semantic-ui-react';
 
 
 const UserPanel = (props) => {
@@ -8,18 +8,22 @@ const UserPanel = (props) => {
       <Grid.Column>
         <Grid.Row style={{ padding: '1.2em', margine: 0}}>
           <Header inverted floated="left" as="h2">
-            <Icon name="user circle outline" />
+            <Icon name="wechat" />
             <Header.Content>Vchat</Header.Content>
           </Header>
-        </Grid.Row>
-
-        <Header style={{ padding: '0.25em' }} inverted as="h4">
+           
+          <Header style={{ padding: '0.25em' }} inverted as="h4">
           <Dropdown 
-            trigger={<span><Icon name="setting" />Profile Setting</span>} 
+            trigger={
+            <span>
+              <Image src={props.user.photoURL} spaced="right"  avatar/>
+              { props.user.displayName}
+            </span>} 
             options={props.dropdownOptions} 
           />
         </Header>
 
+        </Grid.Row>
       </Grid.Column>
     </Grid>
   )

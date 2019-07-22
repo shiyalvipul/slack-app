@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Grid, Form, Segment, Button, Header, Message, Icon} from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 import firebase from '../../../config/firebase';
-// import { showNotification } from '../../../utils/Notifications';
 
 
 class Login extends Component {
@@ -33,7 +33,12 @@ class Login extends Component {
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(SignedInUser => {
-        console.log(SignedInUser);
+          console.log(SignedInUser);
+          if(SignedInUser) {  // redirect to Dashborad Page
+            this.props.history.push('/');
+          } else { 
+            this.props.history.push('/login');
+          }
       })
       .catch(err => {
         console.error(err)
@@ -124,4 +129,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);
